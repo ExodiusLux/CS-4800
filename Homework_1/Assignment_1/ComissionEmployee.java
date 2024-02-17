@@ -1,4 +1,4 @@
-package Assignment_1;
+package Homework_1.Assignment_1;
 
 public class ComissionEmployee extends Employee{
     int comissionRate;
@@ -12,5 +12,8 @@ public class ComissionEmployee extends Employee{
         super("", "", "");
         comissionRate = 0;
         grossSales = 0;
+    }
+    public void print(){
+        System.out.println(first_name + " " + last_name + " SSN:" + SSN + " Comission Rate:" + comissionRate + " Gross Sales:" + grossSales);
     }
 }

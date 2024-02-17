@@ -1,4 +1,4 @@
-package Assignment_1;
+package Homework_1.Assignment_1;
 
 public class BaseEmployee extends Employee{
     int baseSalary;
@@ -9,5 +9,8 @@ public class BaseEmployee extends Employee{
     BaseEmployee(){
         super("", "", "");
         baseSalary = 0;
+    }
+    public void print(){
+        System.out.println(first_name + " " + last_name + " SSN:" + SSN + " Salary:" + baseSalary);
     }
 }

@@ -1,4 +1,4 @@
-package Assignment_1;
+package Homework_1.Assignment_1;
 
 public class Employee {
     String first_name;

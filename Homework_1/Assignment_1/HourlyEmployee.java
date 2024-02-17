@@ -1,4 +1,4 @@
-package Assignment_1;
+package Homework_1.Assignment_1;
 
 public class HourlyEmployee extends Employee{
     int wage; 
@@ -12,5 +12,8 @@ public class HourlyEmployee extends Employee{
         super("", "", "");
         wage = 0;
         hoursWorked = 0;
+    }
+    public void print(){
+        System.out.println(first_name + " " + last_name + " SSN:" + SSN + " Wage:" + wage + " Hours Worked:" + hoursWorked);
     }
 }
