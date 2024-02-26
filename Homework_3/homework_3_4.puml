@@ -1,0 +1,27 @@
+@startuml
+class File{
+    -String file_name
+
+    +getFileName(): String
+    +setFileName(String file_name)
+    +print()
+}
+class Folder{
+   -Object[] files
+   -Object[] subfolders
+   String subfolder_name
+
+
+   +getFiles(): Object[]
+   +getFolders(): Object []
+   +getFolderName() : String
+   +setFolderName(String folder_name)
+   +removesubFolder(String subfolder_name)
+   +addsubFolder(String subfolder_name)
+   +getsubFolder(): Folder
+   +removeFile(File file)
+   +addFile(String file_name)
+   +print()
+   +printFolderContents()
+}
+@enduml

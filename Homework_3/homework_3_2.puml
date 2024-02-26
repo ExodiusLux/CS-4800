@@ -1,0 +1,29 @@
+@startuml
+
+class Ship{
+    -String ship_name
+    -String year_built
+
+    +getShipName() : String
+    +getYearBuilt() : String
+    +setShipName(String ship_name)
+    +setYearBuilt(String year_built)
+    +print()
+}
+class CruiseShip extends Ship{
+    -int num_of_Passengers
+
+    +getNumofPassengers() : int
+    +setNumofPassengers(int num_of_Passengers)
+    +print()
+}
+class CargoShip extends Ship{
+    -int cargo_capacity
+
+    +getCargoCapacity() : int
+    +setCargoCapacity(int cargo_capacity)
+    +print()
+
+}
+
+@enduml
