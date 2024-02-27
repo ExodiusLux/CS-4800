@@ -1,0 +1,37 @@
+@startuml
+
+object "php_demo1:Folder" as php {
+    subfolder_name = php_demo1
+}
+object "Source Files:Folder" as src{
+    subfolder_name = "Source Files"
+}
+object ".phalcon:Folder" as phal {
+    subfolder_name = .phalcon
+}
+object "cache:Folder" as ca {
+    subfolder_name = cache
+}
+object "public:Folder" as pub{
+    subfolder_name = public
+}
+object ".htaccess:File" as hta {
+    file_name = .htaccess
+}
+object ".htrouter.php:File" as htr{
+    file_name = .htrouter.php
+}
+object "index.html:File" as ind {
+    file_name = index.html
+}
+
+php *-- src
+
+src *-- phal
+src *-- ca
+src *-- pub
+
+pub *-- hta
+pub *-- htr
+pub *-- ind
+@enduml

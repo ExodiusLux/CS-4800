@@ -1,0 +1,20 @@
+@startuml
+
+object "course:Course" as cr{
+    course_name = "Software Engineering"
+}
+object "instructor:Instructor" as ins{
+    first_name = "Nima"
+    last_name = "Davarpanah"
+    office_number = "3-2636"
+}
+
+object "textbook:Textbook" as txt{
+    title = "Clean Code"
+    author = "Robert C. Martin"
+    publisher = "Prentice Hall"
+}
+
+cr o-- ins
+cr o-- txt
+@enduml

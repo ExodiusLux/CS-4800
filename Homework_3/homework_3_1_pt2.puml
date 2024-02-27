@@ -1,0 +1,18 @@
+@startuml
+object "Admire:Ship" as sh{
+     ship_name = "Admire"
+     year_built = "1997"
+}
+object "Carnival Cruise:Cruiseship" as carnival{
+     ship_name = "Carnival Cruise"
+     year_built = 2019
+     num_of_passengers = 3000
+}
+
+object "Tankers:Cargoship" as tank{
+     ship_name = "Tankers"
+     year_built = "2011"
+     cargo_capacity = 200000
+}
+
+@enduml
