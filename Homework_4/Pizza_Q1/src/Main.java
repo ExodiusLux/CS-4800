@@ -10,7 +10,9 @@ public class Main {
                 .addTopping(Toppings.Mushrooms).addTopping(Toppings.Ham).addTopping(Toppings.Beef).addTopping(Toppings.Chicken).addTopping(Toppings.ExtraCheese).addTopping(Toppings.Bacon)
                 .addTopping(Toppings.Pesto).build();
 
-
+        persnl_P1.eat();
+        persnl_P2.eat();
+        persnl_P3.eat();
 
 
         Pizza lrg_3topping_P = new PizzaBuilder().setPizzaChain("Pizza Hut").setSize(Size.Large).addTopping(Toppings.Pepperoni).addTopping(Toppings.Sausage)
