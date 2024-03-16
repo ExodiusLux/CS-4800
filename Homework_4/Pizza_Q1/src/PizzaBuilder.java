@@ -4,7 +4,7 @@ import java.util.List;
 public class PizzaBuilder {
     private String pizza_Chain;
     private Size size;
-    private final List<String> toppings;
+    private final List<Toppings> toppings;
     public PizzaBuilder(){
         toppings = new ArrayList<>();
     }
@@ -18,7 +18,7 @@ public class PizzaBuilder {
         return this;
     }
 
-    public PizzaBuilder addTopping(String topping){
+    public PizzaBuilder addTopping(Toppings topping){
         this.toppings.add(topping);
         return this;
     }
