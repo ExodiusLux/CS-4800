@@ -7,7 +7,7 @@ public class ChatHistory implements IterableByUser {
     }
 
     public void addMessage(Message message){
-            messages.push(message);
+        messages.push(message);
     }
 
     public Message getLastMessage(){
