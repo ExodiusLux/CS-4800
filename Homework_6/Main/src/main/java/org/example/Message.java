@@ -16,7 +16,7 @@ public class Message {
         return sender;
     }
 
-    public List<String> getRecipient(){
+    public List<String> getRecipients(){
         return recipients;
     }
 

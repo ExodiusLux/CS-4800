@@ -1,6 +1,6 @@
 package org.example;
 import java.util.*;
-public class User {
+public class User implements IterableByUser{
     private String username;
     private ChatServer chatServer;
 
@@ -14,7 +14,7 @@ public class User {
     }
 
     public void receiveMessage(Message message){
-        System.out.println("[" + message.getTimestamp() + "] " + message.getSender());
+        System.out.println("[" + message.getTimestamp() + "] " + message.getSender() + " has sent a message to " + message.getRecipients());
     }
 
     public void undoLastMessage() {
@@ -28,4 +28,9 @@ public class User {
     public String getUsername(){
         return username;
     }
+    @Override
+    public Iterator<Message> iterator(User userToSearchWith) {
+        return chatServer.getChatHistory(this).iterator(userToSearchWith);
+    }
+
 }

@@ -1,7 +1,7 @@
 package org.example;
 import java.util.*;
-public class ChatHistory {
-    private Stack<String> messages;
+public class ChatHistory implements IterableByUser {
+    private Stack<Message> messages;
     public ChatHistory(){
         this.messages = new Stack<>();
     }
@@ -22,9 +22,8 @@ public class ChatHistory {
             messages.pop();
         }
     }
-
     @Override
-    public Iterator<Message> iterator(){
-        return messages.iterator();
+    public Iterator<Message> iterator(User userToSearchWith) {
+        return new SearchMessagesByUser(messages.iterator(), userToSearchWith.getUsername());
     }
 }

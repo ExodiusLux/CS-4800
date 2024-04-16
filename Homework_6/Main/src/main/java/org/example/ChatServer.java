@@ -19,20 +19,39 @@ public class ChatServer {
     public void sendMessage(User sender, List<String> recipients, String content){
         Message message  = new Message(sender.getUsername(), recipients, content);
         for(String recipient : recipients){
-            if(!blockedUsers.containsKey(users.get(Recipients))){
-                users.get(recipient).recieveMessage(message);
-                chatHistories.get(users.get(recipient)).addMessage(message);
+            User recipientUser = users.get(recipient);
+            if(recipientUser != null && !blockedUsers.containsKey(recipientUser)) {
+                recipientUser.receiveMessage(message);
+                chatHistories.get(recipientUser).addMessage(message);
+            }
+            else{
+                System.out.println(sender.getUsername() + " cannot send a message to a user because they have been blocked");
+            }
+        }
+        chatHistories.get(sender).addMessage(message);
+    }
+
+    public void undoLastMessage(User user){
+        ChatHistory userChatHistory = chatHistories.get(user);
+        Message lastMessage = userChatHistory.getLastMessage();
+        if (lastMessage != null) {
+            userChatHistory.undoLastMessage();
+            for (String recipient : lastMessage.getRecipients()) {
+                User recipientUser = users.get(recipient);
+                if (recipientUser != null) {
+                    chatHistories.get(recipientUser).undoLastMessage();
+                }
             }
         }
     }
 
-    public void undoLastMessage(User user){
-        chatHistories.get(user).undoLastMessage();
+    public void blockUser(User blocker, String username){
+        blockedUsers.put(users.get(blocker.getUsername()), username);
+        System.out.println("User:" + blocker.getUsername() + " has blocked " + username);
     }
 
-    public void blockUser(User user){
-
+    public ChatHistory getChatHistory(User user){
+        return chatHistories.get(user);
     }
-
 
 }
