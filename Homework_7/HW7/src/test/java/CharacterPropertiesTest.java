@@ -10,7 +10,6 @@ public class CharacterPropertiesTest {
         String actual = prop.getFont();
         assertEquals(expected,actual);
     }
-
     @Test
     public void getSize(){
         int expected = 16;
