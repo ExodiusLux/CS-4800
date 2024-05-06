@@ -2,6 +2,10 @@ package org.example;
 
 public class WaitingForMoneyState implements StateOfVendingMachine{
     private VendingMachine vendingMachine;
+
+    WaitingForMoneyState(VendingMachine vendingMachine){
+        this.vendingMachine = vendingMachine;
+    }
     @java.lang.Override
     public void selectSnack(String snackName) {
         System.out.println("Already selected a snack. Please insert money.");

@@ -4,14 +4,27 @@ public class Main {
     public static void main(String[] args) {
             VendingMachine vendingMachine = new VendingMachine();
 
-            // Chain of Responsibility
-            vendingMachine.setState(new IdleState());
-            vendingMachine.setState(new WaitingForMoneyState(vendingMachine));
-            vendingMachine.setState(new DispensingSnackState(vendingMachine));
 
-            // Simulate user actions
+            vendingMachine.setState(new IdleState(vendingMachine));
             vendingMachine.selectSnack("Snickers");
+
+            vendingMachine.setState(new WaitingForMoneyState(vendingMachine));
             vendingMachine.insertMoney(2.0);
+
+            vendingMachine.setState(new DispensingSnackState(vendingMachine));
+            vendingMachine.dispenseSnack();
+
+            vendingMachine.selectSnack("KitKat");
+
+            vendingMachine.setState(new DispensingSnackState(vendingMachine));
+            vendingMachine.dispenseSnack();
+
+            vendingMachine.selectSnack("Coke");
+
+            vendingMachine.setState(new WaitingForMoneyState(vendingMachine));
+            vendingMachine.insertMoney(2.0);
+
+            vendingMachine.setState(new DispensingSnackState(vendingMachine));
             vendingMachine.dispenseSnack();
     }
 }

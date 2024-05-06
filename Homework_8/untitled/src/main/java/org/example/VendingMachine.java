@@ -1,13 +1,16 @@
 package org.example;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
+
 public class VendingMachine implements StateOfVendingMachine{
     private StateOfVendingMachine state;
-    private Map<String, Snack> snacks;
+    private HashMap<String, Snack> snacks;
     private double currentBalance;
+
+    private String selectedSnack;
     public VendingMachine(){
-        state = new IdleState();
-        snacks = new Hashmap<>();
+        state = new IdleState(this);
+        snacks = new HashMap<String, Snack>();
         snacks.put("Coke", new Snack("Coke", 1.5, 10));
         snacks.put("Pepsi", new Snack("Pepsi", 1.25, 5));
         snacks.put("Cheetos", new Snack("Cheetos", 2.0, 7));
@@ -41,7 +44,15 @@ public class VendingMachine implements StateOfVendingMachine{
         this.currentBalance = currentBalance;
     }
 
-    public Map<String, Snack> getSnacks(){
+    public HashMap<String, Snack> getSnacks(){
         return snacks;
+    }
+
+    public String getSelectedSnack() {
+        return selectedSnack;
+    }
+
+    public void setSelectedSnack(String selectedSnack) {
+        this.selectedSnack = selectedSnack;
     }
 }

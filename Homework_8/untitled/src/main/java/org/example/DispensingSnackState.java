@@ -21,15 +21,20 @@ public class DispensingSnackState implements StateOfVendingMachine{
         Map<String, Snack> snacks = vendingMachine.getSnacks();
         double currentBalance = vendingMachine.getCurrentBalance();
 
-        Snack selectedSnack = snacks.get("Snickers");
+        Snack selectedSnack = snacks.get(vendingMachine.getSelectedSnack());
 
         if (selectedSnack != null && selectedSnack.getQuantity() > 0 && currentBalance >= selectedSnack.getPrice()) {
             System.out.println("Dispensing " + selectedSnack.getName());
             selectedSnack.setQuantity(selectedSnack.getQuantity() - 1);
             vendingMachine.setCurrentBalance(currentBalance - selectedSnack.getPrice());
-        } else {
-            System.out.println("Sorry, snack is not available or insufficient balance.");
         }
-        vendingMachine.setState(new IdleState());
+        else if (selectedSnack == null || selectedSnack.getQuantity() < 0){
+            System.out.println("Sorry, snack is not available");
+        }
+        else{
+            System.out.println("Sorry insufficient balance.");
+        }
+        vendingMachine.setSelectedSnack("");
+        vendingMachine.setState(new IdleState(vendingMachine));
     }
 }
