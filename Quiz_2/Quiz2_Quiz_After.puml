@@ -1,0 +1,145 @@
+@startuml
+object "Arial Black 14" as ab14{
+    -String font = "Arial"
+    -String color = "Black"
+    -int size = 14
+}
+object "Verdana Blue 18" as vb18{
+    -String font = "Verdana"
+    -String color = "Blue"
+    -int size = 18
+}
+object "Verdana Blue 12" as vb12{
+    -String font = "Verdana"
+    -String color = "Blue"
+    -int size = 12
+}
+object "Arial Black 16" as ab16{
+    -String font = "Arial"
+    -String color = "Black"
+    -int size = 16
+ }
+object "Calibri Blue 99" as cb99{
+    -String font = "Calibri"
+    -String color = "Blue"
+    -int size = 99
+}
+object "testdocument: Document" as testdocument{
+}
+object "readDocumentVerify: Document" as readDocumentVerify{
+
+}
+object "CharacterPropertiesFactory" as rcpf
+
+object "CharacterPropertiesFactory" as dcpf{
+}
+object "Array<List> characters" as arlc{
+}
+object "Array<List> characters" as rarlc{
+
+}
+object "H" as Hab16{
+    char character = "H"
+}
+object "e" as Eab14{
+    char character = "e"
+}
+object "l" as Lab14{
+    char character = "l"
+}
+object "o" as Oab14{
+    char character = "o"
+}
+object "W" as Wab16{
+    char character = "W"
+}
+object "r" as Rab14{
+    char character = "r"
+}
+object "d" as Dab14{
+    char character = "d"
+}
+object "C" as Cvb18{
+    char character = "C"
+}
+object "S" as Svb18{
+    char character = "S"
+}
+object "5" as 5vb12{
+    char character = "5"
+}
+object "8" as 8vb12{
+    char character = "8"
+
+}
+object "0" as 0vb12{
+    char character = "0"
+}
+
+object text.txt{
+}
+
+map "Map<String, CharacterProperties> flyweights" as flyweights {
+    ArialBlack16 *-> ab16
+    ArialBlack14 *-> ab14
+    VerdanaBlue18 *-> vb18
+    VerdanaBlue12 *-> vb12
+}
+map "Map<String, CharacterProperties> flyweights" as rflyweights{
+    ArialBlack16 *-> ab16
+    ArialBlack14 *-> ab14
+    VerdanaBlue18 *-> vb18
+    VerdanaBlue12 *-> vb12
+    CalibriBlue99 *-> cb99
+}
+
+arlc *-- Hab16
+arlc *-- Eab14
+arlc *-- Lab14
+arlc *-- Oab14
+arlc *-- Wab16
+arlc *-- Rab14
+arlc *-- Dab14
+arlc *-- Cvb18
+arlc *-- Svb18
+arlc *-- 5vb12
+arlc *-- 8vb12
+arlc *-- 0vb12
+
+rarlc *-- Hab16
+rarlc *-- Eab14
+rarlc *-- Lab14
+rarlc *-- Oab14
+rarlc *-- Wab16
+rarlc *-- Rab14
+rarlc *-- Dab14
+rarlc *-- Cvb18
+rarlc *-- Svb18
+rarlc *-- 5vb12
+rarlc *-- 8vb12
+rarlc *-- 0vb12
+
+ab16 -- Hab16
+ab14 -- Eab14
+ab14 -- Lab14
+ab14 -- Oab14
+ab16 -- Wab16
+ab14 -- Rab14
+ab14 -- Dab14
+vb18 -- Cvb18
+vb18 -- Svb18
+cb99 -- 5vb12
+vb12 -- 8vb12
+cb99 -- 0vb12
+
+readDocumentVerify *-- rarlc
+testdocument *-- dcpf
+dcpf *-- flyweights
+testdocument *-- arlc
+
+readDocumentVerify *-- rcpf
+readDocumentVerify *-- rflyweights
+rcpf *-- rflyweights
+
+@enduml
+

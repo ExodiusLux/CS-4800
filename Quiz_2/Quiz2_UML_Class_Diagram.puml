@@ -1,0 +1,44 @@
+@startuml
+class Character{
+    -Character char
+    -CharacterProperties characterProperty
+    +Character(character: char, characterProperty: CharacterProperties)
+    +setCharacter(character: char): void
+    +setCharacterProperty(CharacterProperties: characterProperty) : void
+    +getCharacter() : Character
+    +getFont() : Font
+    +getColor() : Color
+    +getSize() : Size
+}
+
+class CharacterProperties{
+    -String font
+    -String color
+    -int size
+    +CharacterProperties(String font, String color, int size)
+    +getFont() : String
+    +getColor() : String
+    +getSize() : int
+}
+
+class CharacterPropertiesFactory{
+    -Map<String, CharacterProperties> flyweights
+    +setAndRetrieveFlyweightCharacterProperties(String font, String color, int size): CharacterProperties
+    +sizeOfMap () : int
+
+}
+
+class Document{
+    - List<Character> characters
+    -CharacterProperties propertiesFactory
+    +addCharacter(char c, String font, String color, int size) : void
+    +editCharacterProperties(int index, String font, String color, int size) : void
+    +saveToFile(String filename) : void
+    +loadFromFile(String filename) : void throws IOException
+}
+Document *-- CharacterPropertiesFactory
+Document  *-- "0..*"Character
+Character  *-- CharacterProperties
+CharacterPropertiesFactory ..> CharacterProperties
+@enduml
+
