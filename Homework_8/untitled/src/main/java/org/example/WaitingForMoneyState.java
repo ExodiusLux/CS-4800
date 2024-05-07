@@ -6,21 +6,23 @@ public class WaitingForMoneyState implements StateOfVendingMachine{
     WaitingForMoneyState(VendingMachine vendingMachine){
         this.vendingMachine = vendingMachine;
     }
-    @java.lang.Override
+    @Override
     public void selectSnack(String snackName) {
         System.out.println("Already selected a snack. Please insert money.");
 
     }
 
-    @java.lang.Override
+    @Override
     public void insertMoney(double amount) {
         double currentBalance = vendingMachine.getCurrentBalance() + amount;
         vendingMachine.setCurrentBalance(currentBalance);
-        System.out.println("Current balance: " + currentBalance);
+        System.out.println("Added Balance: $" + amount + " Current balance: $" + currentBalance);
+        vendingMachine.setState(new DispensingSnackState(this.vendingMachine));
     }
 
-    @java.lang.Override
+    @Override
     public void dispenseSnack() {
         System.out.println("Money inserted. Please wait for the snack to be dispensed.");
+        vendingMachine.setState(new DispensingSnackState(this.vendingMachine));
     }
 }

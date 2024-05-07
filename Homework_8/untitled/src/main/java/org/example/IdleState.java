@@ -16,6 +16,7 @@ public class IdleState implements StateOfVendingMachine{
         else if (vendingMachine.getSnacks().containsKey(snackName)) {
             System.out.println("Snack selected: " + snackName);
             vendingMachine.setSelectedSnack(snackName);
+            vendingMachine.setState(new WaitingForMoneyState(this.vendingMachine));
         }
         else{
             System.out.println("Unknown Snack selected please selected an available snack");

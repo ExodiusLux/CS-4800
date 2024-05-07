@@ -11,7 +11,7 @@ public class Snack {
         this.quantity = quantity;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 
@@ -27,7 +27,7 @@ public class Snack {
         this.quantity = quantity;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
